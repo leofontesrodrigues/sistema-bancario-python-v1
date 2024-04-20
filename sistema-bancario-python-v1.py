@@ -32,11 +32,32 @@ class ContaBancaria:
         print(f"\nSaldo atual: R$ {self.saldo:.2f}")
 
 
-# Teste do sistema bancário
+# Função para exibir o menu de opções
+def exibir_menu():
+    print("\nMenu de Opções:")
+    print("[d] depositar")
+    print("[s] sacar")
+    print("[e] extrato")
+    print("[q] sair")
+
+
+# Teste do sistema bancário com o menu de opções
 conta = ContaBancaria()
-conta.deposito(1000)
-conta.saque(500)
-conta.saque(300)
-conta.saque(200)
-conta.saque(600)
-conta.extrato()
+
+while True:
+    exibir_menu()
+    opcao = input("Escolha uma opção: ")
+
+    if opcao == "d":
+        valor = float(input("Digite o valor do depósito: "))
+        conta.deposito(valor)
+    elif opcao == "s":
+        valor = float(input("Digite o valor do saque: "))
+        conta.saque(valor)
+    elif opcao == "e":
+        conta.extrato()
+    elif opcao == "q":
+        print("Saindo...")
+        break
+    else:
+        print("Opção inválida. Por favor, escolha uma opção válida.")
